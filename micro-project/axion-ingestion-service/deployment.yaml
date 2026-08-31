@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ingestion
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ingestion-1
+  template:
+    metadata:
+      labels:
+        app: ingestion-1
+    spec:
+      containers:
+        - name: ingestion
+          image: acrmicrodev567.azurecr.io/ingestion:v4
+          ports:
+            - containerPort: 8000
