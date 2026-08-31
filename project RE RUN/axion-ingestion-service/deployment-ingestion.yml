@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ingestion
+spec:
+  selector:
+    matchLabels:
+      app: ingestion
+  template:
+    metadata:
+      labels:
+        app: ingestion
+    spec:
+      containers:
+      - name: ingestion
+        image: acrmicrodev567.azurecr.io/ingestion:v1
+        
+        ports:
+        - containerPort: 8000
+        
+        env:
+                - name: DATABASE_URL
+                  value: "postgresql://myuser:mypassword@postgresqlsvc:5432/mydatabase"

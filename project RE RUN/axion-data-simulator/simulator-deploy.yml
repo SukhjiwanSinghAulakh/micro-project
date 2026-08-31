@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simulator-deployment
+spec:
+  selector:
+    matchLabels:
+      app: simulator-deployment
+  template:
+    metadata:
+      labels:
+        app: simulator-deployment
+    spec:
+      containers:
+      - name: simulator-deployment
+        image: acrmicrodev567.azurecr.io/data-simulator:v1
+        
+        ports:
+        - containerPort: 8080
+        
+        env:
+        - name: API_URL
+          value: "http://ingestion:8000/api/v1/telemetry/ingest"
+
+        - name: INTERVAL_SECONDS
+          value: "5"
