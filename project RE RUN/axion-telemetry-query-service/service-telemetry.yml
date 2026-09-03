@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: telemetry-deployment
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   selector:
     app: telemetry-deployment
   ports:
